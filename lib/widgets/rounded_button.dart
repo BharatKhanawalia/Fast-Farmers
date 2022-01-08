@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:fast_farmers/constants.dart';
 
 class RoundedButton extends StatelessWidget {
-  final String text;
-  final double fontSize;
-  final double width;
-  final double height;
-  final double vertical;
-  final double horizontal;
-  final double elevation;
-  final Function press;
-  final Color color, textColor, primary;
+  final String? text;
+  final double? fontSize;
+  final double? width;
+  final double? height;
+  final double? vertical;
+  final double? horizontal;
+  final double? elevation;
+  final Function? press;
+  final Color? color, textColor, primary;
   const RoundedButton({
     this.fontSize,
     this.height,
@@ -37,15 +37,15 @@ class RoundedButton extends StatelessWidget {
           primary: primary,
           backgroundColor: color,
           elevation: elevation,
-          padding:
-              EdgeInsets.symmetric(vertical: vertical, horizontal: horizontal),
+          padding: EdgeInsets.symmetric(
+              vertical: vertical!, horizontal: horizontal!),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50.0),
           ),
         ),
-        onPressed: press,
+        onPressed: () => press,
         child: Text(
-          text,
+          text!,
           textAlign: TextAlign.center,
           style: TextStyle(
               color: textColor,

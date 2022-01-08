@@ -1,8 +1,9 @@
+import 'package:fast_farmers/constants.dart';
 import 'package:flutter/material.dart';
 
 class CropDetailsScreen extends StatefulWidget {
   const CropDetailsScreen({
-    Key key,
+    Key? key,
     this.image,
     this.cropName,
     this.price,
@@ -10,12 +11,12 @@ class CropDetailsScreen extends StatefulWidget {
     this.orderLimit,
     this.id,
   }) : super(key: key);
-  final String id;
-  final String image;
-  final String cropName;
-  final String price;
-  final String about;
-  final String orderLimit;
+  final String? id;
+  final String? image;
+  final String? cropName;
+  final String? price;
+  final String? about;
+  final String? orderLimit;
   @override
   _CropDetailsScreenState createState() => _CropDetailsScreenState();
 }
@@ -25,7 +26,8 @@ class _CropDetailsScreenState extends State<CropDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.cropName),
+        title: Text(widget.cropName!),
+        backgroundColor: kPrimaryColor,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -36,7 +38,7 @@ class _CropDetailsScreenState extends State<CropDetailsScreen> {
               child: Hero(
                 tag: 'img${widget.id}',
                 child: Image.network(
-                  widget.image,
+                  widget.image!,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -55,7 +57,7 @@ class _CropDetailsScreenState extends State<CropDetailsScreen> {
                     ),
                   ),
                   const SizedBox(height: 5),
-                  Text(widget.about),
+                  Text(widget.about!),
                   const SizedBox(height: 10),
                   const Text(
                     'Price:',
@@ -65,7 +67,7 @@ class _CropDetailsScreenState extends State<CropDetailsScreen> {
                     ),
                   ),
                   const SizedBox(height: 5),
-                  Text(widget.price),
+                  Text(widget.price!),
                   const SizedBox(height: 10),
                   const Text(
                     'Order Limit:',
@@ -75,7 +77,7 @@ class _CropDetailsScreenState extends State<CropDetailsScreen> {
                     ),
                   ),
                   const SizedBox(height: 5),
-                  Text(widget.orderLimit),
+                  Text(widget.orderLimit!),
                 ],
               ),
             ),

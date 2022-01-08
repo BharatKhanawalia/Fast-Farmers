@@ -1,13 +1,13 @@
 class CropDetails {
-  String cropId;
-  String cropName;
-  String aboutCrop;
-  String cropImage;
-  String price;
-  String orders;
-  String postedBy;
-  String addedOn;
-  String orderLimit;
+  String? cropId;
+  String? cropName;
+  String? aboutCrop;
+  String? cropImage;
+  String? price;
+  String? orders;
+  String? postedBy;
+  String? addedOn;
+  String? orderLimit;
 
   CropDetails(
     this.cropId,

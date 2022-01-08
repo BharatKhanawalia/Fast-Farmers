@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xFF6F35A5);
-const kPrimaryLightColor = Color(0xBBF1E6FF);
+const kPrimaryColor = Color(0xFF309A9B);
+const kPrimaryLightColor = Color(0xBB94DBD3);
 const kWhite = Color(0xFFFFFFFF);
 
 const String appTitle = 'Fast Farmers';

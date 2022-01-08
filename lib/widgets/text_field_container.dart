@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TextFieldContainer extends StatelessWidget {
-  final Widget child;
-  final Color borderColor;
-  final double width;
-  final Color backgroundColor;
+  final Widget? child;
+  final Color? borderColor;
+  final double? width;
+  final Color? backgroundColor;
   const TextFieldContainer({
     this.child,
     this.width,
@@ -20,7 +20,7 @@ class TextFieldContainer extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
         color: backgroundColor,
-        border: Border.all(color: borderColor),
+        border: Border.all(color: borderColor!),
         borderRadius: BorderRadius.circular(29),
       ),
       child: child,

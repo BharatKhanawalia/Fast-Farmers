@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AddNewCropScreen extends StatefulWidget {
-  const AddNewCropScreen({Key key}) : super(key: key);
+  const AddNewCropScreen({Key? key}) : super(key: key);
 
   @override
   _AddNewCropScreenState createState() => _AddNewCropScreenState();
@@ -20,10 +20,10 @@ class _AddNewCropScreenState extends State<AddNewCropScreen> {
   final _orderLimitFocusNode = FocusNode();
   final _aboutFocusNode = FocusNode();
 
-  String cropName;
-  String price;
-  String orderLimit;
-  String about;
+  String? cropName;
+  String? price;
+  String? orderLimit;
+  String? about;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +31,7 @@ class _AddNewCropScreenState extends State<AddNewCropScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(addNewCropScreenTitle),
+        backgroundColor: kPrimaryColor,
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -60,14 +61,14 @@ class _AddNewCropScreenState extends State<AddNewCropScreen> {
                           FocusScope.of(context).requestFocus(_priceFocusNode);
                         },
                         hintText: 'Enter Crop Name *',
-                        validator: (value) {
-                          if (value.isEmpty) {
+                        validator: (String? value) {
+                          if (value!.isEmpty) {
                             return 'Name of the crop is required.';
                           }
                           return null;
                         },
-                        onSaved: (String value) {
-                          cropName = value;
+                        onSaved: (String? value) {
+                          cropName = value!;
                         },
                       ),
                       const SizedBox(height: 20),
@@ -83,12 +84,12 @@ class _AddNewCropScreenState extends State<AddNewCropScreen> {
                         },
                         hintText: 'Enter Price *',
                         validator: (value) {
-                          if (value.isEmpty) {
+                          if (value!.isEmpty) {
                             return 'Price is required.';
                           }
                           return null;
                         },
-                        onSaved: (String value) {
+                        onSaved: (String? value) {
                           price = value;
                         },
                       ),
@@ -108,7 +109,7 @@ class _AddNewCropScreenState extends State<AddNewCropScreen> {
                           LengthLimitingTextInputFormatter(5),
                         ],
                         validator: (value) {
-                          if (value.isEmpty) {
+                          if (value!.isEmpty) {
                             _orderLimitFocusNode.requestFocus();
                             return 'Order Limit is required.';
                           }
@@ -119,7 +120,7 @@ class _AddNewCropScreenState extends State<AddNewCropScreen> {
                           }
                           return null;
                         },
-                        onSaved: (String value) {
+                        onSaved: (String? value) {
                           orderLimit = value;
                         },
                       ),
@@ -132,12 +133,12 @@ class _AddNewCropScreenState extends State<AddNewCropScreen> {
                         focusNode: _aboutFocusNode,
                         hintText: 'About Crop *',
                         validator: (value) {
-                          if (value.isEmpty) {
+                          if (value!.isEmpty) {
                             return 'About is required.';
                           }
                           return null;
                         },
-                        onSaved: (String value) {
+                        onSaved: (String? value) {
                           about = value;
                         },
                       ),
@@ -174,12 +175,12 @@ class _AddNewCropScreenState extends State<AddNewCropScreen> {
   }
 
   Future<void> _saveForm() async {
-    final isValid = _formKey.currentState.validate();
+    final isValid = _formKey.currentState!.validate();
     if (!isValid) {
       return;
     }
-    _formKey.currentState.save();
-    await CropApiManager().addNewCrop(cropName, price, orderLimit, about);
+    _formKey.currentState!.save();
+    await CropApiManager().addNewCrop(cropName!, price!, orderLimit!, about!);
     Navigator.pop(context);
   }
 

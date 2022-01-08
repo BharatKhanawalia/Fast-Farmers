@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class CropItem extends StatefulWidget {
   const CropItem(
-      {Key key,
+      {Key? key,
       this.image,
       this.cropName,
       this.price,
@@ -12,12 +12,12 @@ class CropItem extends StatefulWidget {
       this.id,
       this.orderLimit})
       : super(key: key);
-  final String id;
-  final String image;
-  final String cropName;
-  final String price;
-  final String about;
-  final String orderLimit;
+  final String? id;
+  final String? image;
+  final String? cropName;
+  final String? price;
+  final String? about;
+  final String? orderLimit;
 
   @override
   _CropItemState createState() => _CropItemState();
@@ -47,7 +47,7 @@ class _CropItemState extends State<CropItem> {
                 child: Hero(
                   tag: 'img${widget.id}',
                   child: Image.network(
-                    widget.image,
+                    widget.image!,
                     height: double.infinity,
                     width: double.infinity,
                     fit: BoxFit.cover,
@@ -67,11 +67,11 @@ class _CropItemState extends State<CropItem> {
                         padding: EdgeInsets.only(top: 10, left: 10),
                         width: double.infinity,
                         child: Text(
-                          widget.cropName,
+                          widget.cropName!,
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             fontSize:
-                                MediaQuery.of(context).size.height * 0.016,
+                                MediaQuery.of(context).size.height * 0.020,
                             fontWeight: FontWeight.w900,
                           ),
                         ),
@@ -83,11 +83,11 @@ class _CropItemState extends State<CropItem> {
                         padding: EdgeInsets.only(bottom: 10, left: 10),
                         width: double.infinity,
                         child: Text(
-                          widget.price,
+                          widget.price!,
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             fontSize:
-                                MediaQuery.of(context).size.height * 0.014,
+                                MediaQuery.of(context).size.height * 0.018,
                           ),
                         ),
                       ),
@@ -112,7 +112,7 @@ class _CropItemState extends State<CropItem> {
                       vertical: 15,
                       horizontal: 15,
                       elevation: 3,
-                      width: size.width * 0.25,
+                      width: size.width * 0.30,
                       textColor: Colors.white,
                       press: () {
                         Navigator.push(

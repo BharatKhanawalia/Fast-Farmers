@@ -2,7 +2,7 @@ import 'package:fast_farmers/constants.dart';
 import 'package:flutter/material.dart';
 
 class OrdersScreen extends StatefulWidget {
-  const OrdersScreen({Key key}) : super(key: key);
+  const OrdersScreen({Key? key}) : super(key: key);
 
   @override
   _OrdersScreenState createState() => _OrdersScreenState();
@@ -14,6 +14,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(ordersScreenTitle),
+        backgroundColor: kPrimaryColor,
       ),
     );
   }

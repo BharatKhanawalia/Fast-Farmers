@@ -6,20 +6,22 @@ import 'package:fast_farmers/constants.dart';
 import 'package:fast_farmers/widgets/text_field_container.dart';
 
 class RoundedInputField extends StatelessWidget {
-  final Widget icon;
-  final Color borderColor;
-  final Color backgroundColor;
-  final Widget prefix;
-  final TextInputAction textInputAction;
-  final FocusNode focusNode;
-  final FormFieldSetter<String> onSaved;
-  final FormFieldValidator<String> validator;
-  final Function(String) onFieldSubmitted;
-  final Widget prefixIcon;
-  final TextInputType keyboardType;
-  final List<TextInputFormatter> inputFormatters;
-  final String hintText;
-  final String initialValue;
+  final Widget? icon;
+  final Color? borderColor;
+  final Color? backgroundColor;
+  final Widget? prefix;
+  final TextInputAction? textInputAction;
+  final FocusNode? focusNode;
+  final FormFieldSetter<String>? onSaved;
+  final FormFieldValidator<String>? validator;
+  final Function(String)? onFieldSubmitted;
+  final Widget? prefixIcon;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
+  final String? hintText;
+  final String? initialValue;
+  final String? errorText;
+  final FormFieldSetter<String>? onChanged;
 
   const RoundedInputField({
     this.icon,
@@ -36,6 +38,8 @@ class RoundedInputField extends StatelessWidget {
     this.keyboardType,
     this.inputFormatters,
     this.initialValue,
+    this.errorText,
+    this.onChanged,
   });
 
   @override
@@ -43,8 +47,8 @@ class RoundedInputField extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return TextFieldContainer(
       width: size.width * 0.8,
-      backgroundColor: backgroundColor,
-      borderColor: borderColor,
+      backgroundColor: backgroundColor!,
+      borderColor: borderColor!,
       child: TextFormField(
         initialValue: initialValue,
         inputFormatters: inputFormatters,
@@ -52,6 +56,7 @@ class RoundedInputField extends StatelessWidget {
         focusNode: focusNode,
         onFieldSubmitted: onFieldSubmitted,
         onSaved: onSaved,
+        onChanged: onChanged,
         validator: validator,
         keyboardType: keyboardType,
         maxLines: null,
@@ -62,6 +67,7 @@ class RoundedInputField extends StatelessWidget {
           icon: icon,
           hintText: hintText,
           border: InputBorder.none,
+          errorText: errorText,
         ),
       ),
     );

@@ -11,7 +11,7 @@ import 'package:fast_farmers/providers/crop_api_manager.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen(
-      {Key key, this.farmer = false, this.loggedIn = false, this.email = ''})
+      {Key? key, this.farmer = false, this.loggedIn = false, this.email = ''})
       : super(key: key);
   final bool farmer;
   final bool loggedIn;
@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(appTitle),
+        backgroundColor: kPrimaryColor,
       ),
       drawer: Drawer(
         child: ListView(
@@ -70,6 +71,20 @@ class _HomeScreenState extends State<HomeScreen> {
               drawerItemPush(Icons.shopping_bag, 'Orders', OrdersScreen()),
             if (!widget.loggedIn)
               drawerItemPush(Icons.login, 'Login', LoginScreen()),
+            if (widget.loggedIn)
+              ListTile(
+                leading: Icon(Icons.logout),
+                title: Text('Logout'),
+                onTap: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => HomeScreen(
+                                farmer: false,
+                                loggedIn: false,
+                              )));
+                },
+              ),
           ],
         ),
       ),
@@ -100,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
               'Explore All Crops',
               textAlign: TextAlign.start,
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -113,12 +128,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder: (context, index) => Container(
                   padding: EdgeInsets.all(10),
                   child: CropItem(
-                    image: _crops[index].cropImage,
-                    cropName: _crops[index].cropName,
-                    price: _crops[index].price,
-                    about: _crops[index].aboutCrop,
-                    id: _crops[index].cropId,
-                    orderLimit: _crops[index].orderLimit,
+                    image: _crops[index].cropImage!,
+                    cropName: _crops[index].cropName!,
+                    price: _crops[index].price!,
+                    about: _crops[index].aboutCrop!,
+                    id: _crops[index].cropId!,
+                    orderLimit: _crops[index].orderLimit!,
                   ),
                 ),
               ),
